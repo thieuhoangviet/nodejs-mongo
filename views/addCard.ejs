@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Thẻ Tín Dụng</title>
+    <link href="../public/styles/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <div class="the">
+            <h1>Thêm Thẻ Tín Dụng Mới</h1>
+        </div>
+    </header>
+
+    <section>
+        <% if (typeof error !=='undefined' ) { %>
+            <div style="color: red;">
+                <%= error %>
+            </div>
+            <% } %>
+                <form id="add-card-form" action="/" method="POST" >
+                    <label for="cardNumber">Số Thẻ (12 chữ số):</label>
+                    <input type="text" id="cardNumber" name="cardNumber" pattern="\d{12}" required>
+
+                    <label for="bankName">Ngân hàng:</label>
+                    <select id="bankName" name="bankName" required>
+                        <option value="">Chọn Ngân hàng</option>
+                        <!-- Động generate các tùy chọn ngân hàng ở đây -->
+                        <% banks.forEach(bank=> { %>
+                            <option value="<%= bank %>">
+                                <%= bank %>
+                            </option>
+                            <% }); %>
+                    </select>
+
+                    <label for="cardHolderName">Tên Chủ Thẻ (IN HOA, không dấu):</label>
+                    <input type="text" id="cardHolderName" name="cardHolderName" required>
+
+                    <label for="customerName">Tên Khách Hàng:</label>
+                    <input type="text" id="customerName" name="customerName">
+
+                    <label for="dueDate">Hạn Thanh Toán: </label>
+                    <input type="date" id="dueDate" name="dueDate" placeholder="dd-mm-yyyy" required>
+
+                    <button type="submit">Thêm Thẻ</button>
+                </form>
+                <button onclick="location.href='/'">Quay lại Trang Chủ</button>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../public/js/addCard.js"></script>
+</body>
+
+</html>

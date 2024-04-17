@@ -1,0 +1,207 @@
+
+/* Thêm vào styles.css */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+#add-card-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+#add-card-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+#add-card-form input,
+#add-card-form select,
+#add-card-form button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    /* Đảm bảo padding không ảnh hưởng đến chiều rộng tổng thể */
+}
+
+#add-card-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#add-card-form button:hover {
+    opacity: 0.9;
+}
+
+/* Kiểu nút quay lại */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+/*index*/
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#add-card-button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#credit-card-table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#credit-card-table th,
+#credit-card-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#credit-card-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#credit-card-table .green {
+    background-color: #c8e6c9;
+}
+
+#credit-card-table .yellow {
+    background-color: #fff9c4;
+}
+
+#credit-card-table .red {
+    background-color: #ffcdd2;
+}
+
+#credit-card-table .black {
+    background-color: #bdbdbd;
+    color: white;
+}
+/*  css trang login */
+
+.card-management {
+    display: flex;
+    align-items: center; /* Căn chỉnh các mục theo chiều dọc */
+    justify-content: space-around; /* Phân bổ khoảng trống xung quanh các mục */
+    padding: 10px;
+}
+
+.color-guide {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các mục hướng dẫn màu theo chiều dọc */
+    justify-content: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin-left: 20px; /* Tạo khoảng cách giữa nút và hướng dẫn màu */
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#add-card-button {
+    padding: 10px 20px; /* Tăng kích thước cho nút để dễ bấm hơn */
+    font-size: 16px; /* Tăng kích thước font cho dễ đọc */
+    background-color: #4CAF50; /* Màu nền cho nút */
+    color: white; /* Màu chữ cho nút */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Con trỏ chuột hiển thị dạng pointer khi di chuyển qua nút */
+}
+
+#logout-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f44336; /* Màu đỏ cho nút Đăng xuất */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* modal */
+
+#confirmDeleteButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f44336; /* Màu đỏ cho nút Đăng xuất */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button {
+    background-color: #4CAF50; /* Màu nền xanh lá */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Đệm xung quanh nội dung của nút */
+    border: none; /* Không viền */
+    border-radius: 5px; /* Bo góc viền */
+    cursor: pointer; /* Con trỏ chuột khi di qua nút */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+}
+/* Hiệu ứng khi rê chuột qua nút */
+button:hover {
+    background-color: #45a049; /* Thay đổi màu nền khi rê chuột qua */
+}
+
+/* Nút Đăng xuất có màu đặc biệt */
+#logout-button {
+    background-color: #f44336; /* Màu nền đỏ */
+}
+
+/* Hiệu ứng rê chuột cho nút Đăng xuất */
+#logout-button:hover {
+    background-color: #dc3545; /* Màu đỏ sáng hơn khi rê chuột qua */
+}
+.filter-section {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.filter-section label {
+    margin-right: 10px;
+}
+
+#status-filter {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Thẻ Tín Dụng</title>
+    <link href="../public/styles/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <div class="the">
+            <h1>Sửa Thẻ Tín Dụng</h1>
+        </div>
+    </header>
+
+    <section>
+        <% if (typeof error !=='undefined' ) { %>
+            <div style="color: red;">
+                <%= error %>
+            </div>
+            <% } %>
+                <form id="add-card-form" action="/edit/<%= card._id %>" method="POST">
+                    <label for="cardNumber">Số Thẻ (12 chữ số):</label>
+                    <input type="text" id="cardNumber" name="cardNumber" pattern="\d{12}"  value="<%= card.cardNumber %>" required>
+
+                    <label for="bankName">Ngân hàng:</label>
+                    <select id="bankName" name="bankName"  required>
+                        <option><%= card.bankName %></option>
+                        <!-- Động generate các tùy chọn ngân hàng ở đây -->
+                        <% banks.forEach(bank=> { %>
+                            <option value="<%= bank %>">
+                                <%= bank %>
+                            </option>
+                            <% }); %>
+                    </select>
+
+                    <label for="cardHolderName">Tên Chủ Thẻ (IN HOA, không dấu):</label>
+                    <input type="text" id="cardHolderName" name="cardHolderName" value="<%= card.cardHolderName %>" required>
+
+                    <label for="customerName">Tên Khách Hàng:</label>
+                    <input type="text" id="customerName" name="customerName" value="<%= card.customerName %>">
+
+                    <label for="dueDate">Hạn Thanh Toán: </label>
+                    <input type="date" id="dueDate" name="dueDate" placeholder="dd-mm-yyyy" value="<%= card.dueDate.toISOString().substring(0, 10) %>" required>
+
+                    <button type="submit">Cập nhật</button>
+                </form>
+                <button onclick="location.href='/'">Quay lại Trang Chủ</button>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+
+</html>
+<!-- Trong file editCard.ejs -->
+
