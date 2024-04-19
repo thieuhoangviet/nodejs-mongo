@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             bankName: formData.get('bankName'),
             cardHolderName: formData.get('cardHolderName'),
             customerName: formData.get('customerName'),
+            amount: formData.get('amount'),
             dueDate: formData.get('dueDate')
         };
 
