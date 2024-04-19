@@ -126,7 +126,11 @@ const banks = [
   "Ngân hàng TMCP An Bình (ABBank)",
   "Ngân hàng TMCP Việt Nam Thương Tín (Vietbank)",
   "Ngân hàng TMCP Sài Gòn Công Thương (Saigonbank)",
-  "Ngân hàng TMCP Công thương (Vietnam Export Import Bank - Eximbank)"
+  "Ngân hàng TMCP Công thương (Vietnam Export Import Bank - Eximbank)",
+  " VPBank Finance Company Limited (FE Credit)",
+  "Ngân hàng Thương mại Cổ phần Quốc tế (VIB)",
+  "Ngân hàng Công thương Á Âu (CIMB)",
+  "Home Credit Group(Home)"
 ];
 
 

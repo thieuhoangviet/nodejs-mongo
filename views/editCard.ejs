@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Thẻ Tín Dụng</title>
     <link href="../public/styles/styles.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -23,35 +26,48 @@
             <% } %>
                 <form id="add-card-form" action="/edit/<%= card._id %>" method="POST">
                     <label for="cardNumber">Số Thẻ (16 chữ số):</label>
-                    <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}"  value="<%= card.cardNumber %>" required>
+                    <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" value="<%= card.cardNumber %>"
+                        required>
 
                     <label for="bankName">Ngân hàng:</label>
-                    <select id="bankName" name="bankName"  required>
-                        <option><%= card.bankName %></option>
-                        <!-- Động generate các tùy chọn ngân hàng ở đây -->
-                        <% banks.forEach(bank=> { %>
-                            <option value="<%= bank %>">
-                                <%= bank %>
-                            </option>
-                            <% }); %>
-                    </select>
-
+                    <input type="text" name="bankName" id="bankName" value="<%= card.bankName %>" class="form-control"
+                        placeholder="Nhập tên ngân hàng" required>
+                        
                     <label for="cardHolderName">Tên Chủ Thẻ (IN HOA, không dấu):</label>
-                    <input type="text" id="cardHolderName" name="cardHolderName" value="<%= card.cardHolderName %>" required>
+                    <input type="text" id="cardHolderName" name="cardHolderName" value="<%= card.cardHolderName %>"
+                        required>
 
                     <label for="customerName">Tên Khách Hàng:</label>
                     <input type="text" id="customerName" name="customerName" value="<%= card.customerName %>">
 
                     <label for="dueDate">Hạn Thanh Toán: </label>
-                    <input type="date" id="dueDate" name="dueDate" placeholder="dd-mm-yyyy" value="<%= card.dueDate.toISOString().substring(0, 10) %>" required>
+                    <input type="date" id="dueDate" name="dueDate" placeholder="dd-mm-yyyy"
+                        value="<%= card.dueDate.toISOString().substring(0, 10) %>" required>
 
                     <button type="submit">Cập nhật</button>
                 </form>
                 <button onclick="location.href='/'">Quay lại Trang Chủ</button>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var availableBanks = [
+        <% banks.forEach(function (bank, index) { %>
+                "<%= bank %>" <%= index < banks.length - 1 ? ',' : '' %>
+        <% }); %>
+    ];;
+
+            $("#bankName").autocomplete({
+                source: availableBanks,
+                select: function (event, ui) {
+                    $("#bankName").val(ui.item.label);
+                    return false;
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 </body>
-
 </html>
-<!-- Trong file editCard.ejs -->
-
