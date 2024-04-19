@@ -48,6 +48,7 @@
                     <th>Ngân hàng</th>
                     <th>Chủ Thẻ</th>
                     <th>Tên Khách Hàng</th>
+                    <th>Số tiền</th>
                     <th>Hạn Thanh Toán</th>
                     <th>
                         <div class="filter-section">
@@ -78,6 +79,9 @@
                         </td>
                         <td>
                             <%= card.customerName %>
+                        </td>
+                        <td>
+                            <%= formatCurrency(card.amount) %>
                         </td>
                         <td>
                             <%= card.dueDate %>

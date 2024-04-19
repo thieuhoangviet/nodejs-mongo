@@ -66,6 +66,7 @@ router.post('/', async (req, res) => {
     cardHolderName: req.body.cardHolderName,
     bankName: req.body.bankName,
     customerName: req.body.customerName,
+    amount: req.body.amount,
     dueDate: new Date(req.body.dueDate),
   });
 
@@ -233,6 +234,7 @@ router.post('/edit/:id', async (req, res) => {
       cardHolderName: req.body.cardHolderName.toUpperCase(), // Chuyển tên chủ thẻ thành chữ hoa
       bankName: req.body.bankName,
       customerName: req.body.customerName,
+      amount: req.body.amount,
       dueDate: req.body.dueDate
     }, {
       new: true

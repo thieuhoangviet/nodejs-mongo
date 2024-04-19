@@ -48,7 +48,12 @@ function ensureAuthenticated(req, res, next) {
 }
 
 
-
+app.locals.formatCurrency = (amount) => {
+  if (amount === undefined || amount === null) {
+    return 'Không xác định'; // Hoặc bất kỳ giá trị mặc định nào khác
+  }
+  return amount.toLocaleString('vi-VN');
+};
 
 
 // Login and Logout Routes

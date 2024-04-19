@@ -73,6 +73,10 @@ const creditCardSchema = new Schema({
     required: true,
     uppercase: true // Chuyển tên thành chữ hoa
   },
+  amount: { // thêm trường mới
+    type: Number,
+    required: true
+  },
   bankName: {
     type: String,
     required: true,
