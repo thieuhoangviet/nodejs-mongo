@@ -228,6 +228,7 @@ router.post('/edit/:id', async (req, res) => {
       cardNumber: req.body.cardNumber,
       cardHolderName: req.body.cardHolderName.toUpperCase(), // Chuyển tên chủ thẻ thành chữ hoa
       bankName: req.body.bankName,
+      customerName: req.body.customerName,
       dueDate: req.body.dueDate
     }, {
       new: true

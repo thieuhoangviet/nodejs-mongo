@@ -58,7 +58,7 @@ const creditCardSchema = new Schema({
     required: true,
     validate: {
       validator: function(v) {
-        return /\d{12}/.test(v);
+        return /\d{16}/.test(v);
       },
       message: props => `${props.value} không phải là số thẻ hợp lệ!`
     },
