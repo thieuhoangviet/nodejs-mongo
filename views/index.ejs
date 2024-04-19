@@ -51,16 +51,17 @@
                     <th>Số tiền</th>
                     <th>Hạn Thanh Toán</th>
                     <th>
-                        <div class="filter-section">
-                            <label for="status-filter">Lọc theo màu:</label>
-                            <select id="status-filter">
+                        <form action="/" method="get">
+                            <label for="color">Lọc theo màu:</label>
+                            <select name="color" id="color">
                                 <option value="">Tất cả</option>
-                                <option value="#99FF00">Xanh (Hơn 15 ngày)</option>
-                                <option value="yellow">Vàng (5 - 15 ngày)</option>
-                                <option value="red">Đỏ (Dưới 5 ngày)</option>
-                                <option value="black">Đen (Đã quá hạn)</option>
+                                <option value="red">Đỏ</option>
+                                <option value="yellow">Vàng</option>
+                                <option value="black">Đen</option>
+                                <option value="#99FF00">Xanh lá</option>
                             </select>
-                        </div>
+                            <button style="background-color: aliceblue; color: black;" type="submit">Lọc</button>
+                        </form>
                     </th>
                     <th colspan="3" style="text-align: center;">Hành Động</th>
                 </tr>
@@ -86,7 +87,7 @@
                         <td>
                             <%= card.dueDate %>
                         </td>
-                        <td class="<%= card.status %>" style="background-color: <%= card.color %>">
+                        <td style="background-color:<%= card.color %>;"></td>
                         </td>
                         <td>
                             <button class="renew-card" data-card-id="<%= card._id %>">Gia hạn</button>
