@@ -58,7 +58,7 @@ const banks = [
 ];
 const creditCardSchema = new Schema({
   cardNumber: {
-    type: Number,
+    type: String,
     required: true,
     validate: {
       validator: function(v) {
