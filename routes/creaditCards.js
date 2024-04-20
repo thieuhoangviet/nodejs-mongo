@@ -21,12 +21,14 @@ router.get('/', async (req, res) => {
       let color;
       if (daysDiff < 0) {
         color = 'black';
-      } else if (daysDiff < 5) {
+      } else if (daysDiff < 3) {
         color = 'red';
-      } else if (daysDiff <= 15) {
+      } else if (daysDiff < 6) {
         color = 'yellow';
-      } else {
+      } else if (daysDiff <10){
         color = '#99FF00'; // Green
+      }else{
+        color = 'pink';
       }
 
       // Bổ sung kiểm tra nếu có bộ lọc màu và màu của thẻ không khớp với bộ lọc
