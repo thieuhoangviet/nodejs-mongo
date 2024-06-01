@@ -19,7 +19,7 @@
 
     <section>
         <div class="card-management">
-            <a href="/add" target="_blank"><button id="add-card-button">Thêm Thẻ Mới</button></a>
+            <a href="/add"><button id="add-card-button">Thêm Thẻ Mới</button></a>
             <!-- <button id="add-card-button" onclick="location.href='/add'" target="_blank">Thêm Thẻ Mới</button> -->
             <div class="color-guide">
                 <div class="color-item">
@@ -45,19 +45,20 @@
             </div>
             <button id="logout-button" onclick="location.href='/login'">Đăng xuất</button>
         </div>
-        <table id="credit-card-table">
-            <thead>
-                <tr>
-                    <th>Số Thẻ</th>
-                    <th>Ngân hàng</th>
-                    <th>Chủ Thẻ</th>
-                    <th>Tên Khách Hàng</th>
-                    <th>Số tiền</th>
-                    <th>Hạn Thanh Toán</th>
-                    <th>
+        <table id="credit-card-table" role="table">
+            <thead role="rowgroup">
+                <tr role="row">
+                    <th role="columnheader">STT</th>
+                    <th role="columnheader">Số Thẻ</th>
+                    <th role="columnheader" id="bank">Ngân hàng</th>
+                    <th role="columnheader" id="name">Chủ Thẻ</th>
+                    <th role="columnheader" id="nameKH">Tên Khách Hàng</th>
+                    <th role="columnheader">Số Tiền</th>
+                    <th role="columnheader" id="date">Hạn Thanh Toán</th>
+                    <th role="columnheader">
                         <form action="/" method="get">
-                            <label for="color">Lọc theo màu:</label>
-                            <select name="color" id="color">
+                            <label role="row" for="color">Lọc theo màu:</label>
+                            <select role="row" name="color" id="color">
                                 <option value="">Tất cả</option>
                                 <option value="pink">Hồng</option>
                                 <option value="#99FF00">Xanh lá</option>
@@ -65,50 +66,67 @@
                                 <option value="red">Đỏ</option>
                                 <option value="black">Đen</option>
                             </select>
-                            <button style="background-color: aliceblue; color: black;" type="submit">Lọc</button>
+                            <button role="row" style="background-color: aliceblue; color: black;" type="submit">Lọc</button>
                         </form>
                     </th>
-                    <th colspan="3" style="text-align: center;">Hành Động</th>
+                    <th role="columnheader" colspan="3" style="text-align: center;">Hành Động</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody role="rowgroup">
                 <% creditCards.forEach(card=> { %>
-                    <tr id="card-row-<%= card._id %>">
-                        <td>
+                    <tr  role="row" id="card-row-<%= card._id %>">
+                        <td data-label="STT" role="cell">
+                            <%= card.index %>
+                        </td>
+                        <td data-label="Số Thẻ" role="cell" id="sothe">
                             <%= card.cardNumber %>
                         </td>
-                        <td>
+                        <td data-label="Ngân hàng" role="cell" id="bank">
                             <%= card.bankName %>
                         </td>
-                        <td>
+                        <td data-label="Chủ Thẻ" role="cell" id="name">
                             <%= card.cardHolderName %>
                         </td>
-                        <td>
+                        <td data-label="Tên Khách Hàng" role="cell" id="nameKH">
                             <%= card.customerName %>
                         </td>
-                        <td>
+                        <td data-label="Số Tiền" role="cell">
                             <%= formatCurrency(card.amount) %>
                         </td>
-                        <td>
+                        <td data-label="Hạn Thanh Toán" role="cell" id="date">
                             <%= card.dueDate %>
                         </td>
-                        <td style="background-color:<%= card.color %>;"></td>
+                        <td role="cell" id="mobile" data-label="Lọc theo màu:">
+                            <form action="/" method="get">
+                                <label role="row" for="color" >  </label>
+                                <select role="row" name="color" id="color">
+                                    <option value="">Tất cả</option>
+                                    <option value="pink">Hồng</option>
+                                    <option value="#99FF00">Xanh lá</option>
+                                    <option value="yellow">Vàng</option>
+                                    <option value="red">Đỏ</option>
+                                    <option value="black">Đen</option>
+                                </select>
+                                <button role="row" style="background-color: aliceblue; color: black;" type="submit">Lọc</button>
+                            </form>
                         </td>
-                        <td>
+                        
+                        <td role="cell" class="color" id="color" style="background-color:<%= card.color %>;">
+                        </td>
+                        <td data-label="Hành Động" role="cell">
                             <button class="renew-card" data-card-id="<%= card._id %>">Gia hạn</button>
                         </td>
-                        <td>
-                            <a href="/edit/<%= card._id %>" target="_blank"><button>Cập nhật</button></a>
+                        <td role="cell">
+                            <a href="/edit/<%= card._id %>"><button>Cập nhật</button></a>
                         </td>
-                        <td>
-                            <!-- Nút xóa -->
-                            <!-- Thêm nút xóa với data-id để xác định thẻ cần xóa -->
+                        <td role="cell">
                             <button id="logout-button" class="delete-button" data-id="<%= card._id %>">Xóa</button>
                         </td>
                     </tr>
                     <% }); %>
             </tbody>
         </table>
+        <a href="/"><button class="Home" id="add-card-button">Trang chủ</button></a>
     </section>
 
 

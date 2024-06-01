@@ -58,8 +58,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: rgb(2,0,36);
-background: linear-gradient(343deg, rgba(2,0,36,1) 0%, rgba(47,234,129,0.7338585092240021) 21%, rgba(35,229,160,1) 47%, rgba(35,229,161,1) 64%, rgba(25,224,187,1) 84%, rgba(0,212,255,1) 100%);
+    background-color: #f4f4f4;
 }
 
 
@@ -76,7 +75,6 @@ select{
 }
 
 #credit-card-table {
-    text-align: center;
     width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
@@ -87,7 +85,7 @@ select{
 #credit-card-table td {
     border: 1px solid #ddd;
     /* padding: 8px; */
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
 }
 
@@ -126,7 +124,7 @@ select{
     display: flex;
     flex-direction: column; /* Sắp xếp các mục hướng dẫn màu theo chiều dọc */
     justify-content: center;
-    padding: 5px;
+    padding: 10px;
     background-color: #f4f4f4;
     border-radius: 5px;
     margin-left: 20px; /* Tạo khoảng cách giữa nút và hướng dẫn màu */
@@ -227,12 +225,11 @@ button:hover {
     } */
     #credit-card-table #color{
         height: 50px;
-        width: 50%;
+        width: 50px;
         padding-right: 50%;
     }
     button{
-        max-width: 100px;
-        width: 100%;
+        width: 20%;
     }
     table, thead, tbody, th, td, tr { 
 		display: block; 
@@ -251,70 +248,107 @@ button:hover {
     #credit-card-table #date{
         display: none;
     }
-    #mobile{
-        display: none;
-    }
-    .Home{
-        display: none;
-    }
 }
 
 @media only screen and (min-width: 901px) {
     #add-card-form {
         max-width: 500px; /* Giữ nguyên giá trị này cho desktop */
     }
-    #mobile{
-        display: none;
-    }
-    .Home{
-        display: none;
-    }
 }
 
 
-@media (max-width: 600px) {
-    #credit-card-table, #credit-card-table th, #credit-card-table td {
+
+
+
+
+/* test */
+@media
+	  only screen 
+    and (max-width: 600px) {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+        td > *:not(:before) { /* Chọn tất cả phần tử con trực tiếp của td trừ :before */
+            position: relative;
+            left: -50%; 
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px;
+          }
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			/* white-space: nowrap; */
+		}
+
+        td form {
+            display: inline; /* Hoặc inline-block nếu bạn muốn kiểm soát khoảng cách xung quanh */
+          }
+		/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+		td:nth-of-type(1):before { content: "STT"; }
+		td:nth-of-type(2):before { content: "Số Thẻ"; }
+		td:nth-of-type(3):before { content: "Ngân Hàng"; }
+		td:nth-of-type(4):before { content: "Chủ Thẻ"; }
+		td:nth-of-type(5):before { content: "Tên Khách Hàng"; }
+		td:nth-of-type(6):before { content: "Số Tiền"; }
+		td:nth-of-type(7):before { content: "Hạn Thanh Toán"; }
+		td:nth-of-type(8):before { content: "Lọc theo màu"; }
+        td:nth-of-type(9):before { content: " "; }
+		td:nth-of-type(10):before { content: "Hành Động"; }
+        /* Hiển thị bộ lọc màu riêng */
+     /* Hiển thị bộ lọc màu trong ô tương ứng */
+     td:nth-of-type(8) .filter-section {
         display: block;
-        width: 100%;
-    }
-    #credit-card-table thead {
-        display: none;
-    }
-    .color{
-        display: none;
-    }
-
-    #credit-card-table td {
-        text-align: right;
-        padding-left: 0px;
+        margin: 0;
         position: relative;
+        left: -50%;
     }
 
-    #credit-card-table td:before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0px;
-        width: 5%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: bold;
+    td:nth-of-type(8) .filter-section label {
+        display: inline-block;
+        margin-right: 10px;
     }
 
-    /* Tùy chỉnh thêm cho các thành phần khác nếu cần */
-    .filter-section form {
-        display: flex;
-        flex-direction: column;
-    }
 
-    .filter-section select, .filter-section button {
+    td:nth-of-type(8) #status-filter {
         width: 100%;
-        margin-top: 5px;
     }
+    
+	
 }
-
-
-
-
-
-
